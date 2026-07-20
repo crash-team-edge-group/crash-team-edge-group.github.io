@@ -1,0 +1,176 @@
+---
+layout: default
+title: Research
+permalink: /research/
+---
+
+<p>CRASH (Cryptographic Research and Secure Hardware) is the team within the EDGE Group at
+the VLSI Lab, Dipartimento di Elettronica e Telecomunicazioni (DET), Politecnico di
+Torino, working on hardware for post-quantum and lightweight cryptography on RISC-V.</p>
+
+<p>The team builds tightly- and loosely-coupled accelerators for lattice-, code- and
+hash-based post-quantum schemes (CRYSTALS-Kyber, CRYSTALS-Dilithium, Ascon, CROSS, HQC,
+LESS), integrates them into RISC-V cores through the Core-V eXtension Interface
+(CV-X-IF), and evaluates the resulting designs on FPGA and silicon — including their
+resistance to power side-channel attacks. Work spans the full stack: instruction-set
+extensions, coprocessor RTL, verification flows, and the true-random-number and hashing
+primitives the rest of the cryptography depends on.</p>
+
+<h2>Ongoing projects</h2>
+
+<p class="lede" style="font-size:1rem;">Click a block for a more detailed description of each project.</p>
+
+<div class="project-blocks">
+
+  <details class="project-block wide">
+    <summary>HORCRUX <span class="block-tag">RISC-V ISE · PQC</span></summary>
+    <p class="block-teaser">A unified, lightweight ISA extension covering every NIST-approved PQC algorithm family.</p>
+    <div class="block-detail">
+      <p>HORCRUX provides a single Instruction-Set Extension shared across ML-KEM, ML-DSA,
+      SLH-DSA and HQC, instead of one accelerator per scheme. A tightly coupled coprocessor
+      targets the common bottlenecks — modular arithmetic, matrix multiplication and hash
+      transforms — using minimal hardware resources.</p>
+      <p>On a Zynq UltraScale+ FPGA it reaches up to 3× speedups for lattice- and hash-based
+      schemes and over 30× for code-based schemes, adding under 2,900 LUTs and 400 FFs while
+      staying backward-compatible with standard RISC-V cores.</p>
+      <div class="block-links">
+        <a href="https://github.com/edge-group-polito/HORCRUX/tree/cup" target="_blank" rel="noopener">Repository ↗</a>
+        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=it&user=8SRb1IsAAAAJ&citation_for_view=8SRb1IsAAAAJ:_FxGoFyzp5QC" target="_blank" rel="noopener">Paper ↗</a>
+      </div>
+    </div>
+  </details>
+
+  <details class="project-block">
+    <summary>CIRCE <span class="block-tag">RISC-V ISE · Signatures</span></summary>
+    <p class="block-teaser">A compact RISC-V extension for the CROSS code-based signature scheme.</p>
+    <div class="block-detail">
+      <p>CIRCE integrates CROSS — built on zero-knowledge proofs and the Restricted Syndrome
+      Decoding Problem — through CV-X-IF, supporting both R-SDP and R-SDP(G) across every
+      official parameter set without hardware retuning.</p>
+      <p>An average 2× speed-up on a Zynq UltraScale+ FPGA, with a footprint as small as
+      800 LUTs / 100 FFs.</p>
+      <div class="block-links">
+        <a href="https://github.com/edge-group-polito/CIRCE" target="_blank" rel="noopener">Repository ↗</a>
+      </div>
+    </div>
+  </details>
+
+  <details class="project-block">
+    <summary>CHIMERA <span class="block-tag">ASIP · Ascon</span></summary>
+    <p class="block-teaser">An application-specific coprocessor for the Ascon lightweight cryptography standard.</p>
+    <div class="block-detail">
+      <p>CHIMERA interfaces with a RISC-V core via CV-X-IF and supports Ascon's AEAD
+      (Ascon-128, Ascon-128a) and hashing (Hash, Hasha) modes. Two variants trade off
+      performance and area: a Complete-Round (CR) tightly coupled accelerator, and a
+      Bitwise Rotation Unit (BRU) instruction-set extension.</p>
+      <p>Implemented on both Zynq UltraScale+ FPGA and ASIC.</p>
+      <div class="block-links">
+        <a href="https://github.com/edge-group-polito/CHIMERA" target="_blank" rel="noopener">Repository ↗</a>
+        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=it&user=8SRb1IsAAAAJ&citation_for_view=8SRb1IsAAAAJ:ufrVoPGSRksC" target="_blank" rel="noopener">Paper ↗</a>
+      </div>
+    </div>
+  </details>
+
+  <details class="project-block wide">
+    <summary>ATHOS <span class="block-tag">Hybrid accelerator · X-HEEP</span></summary>
+    <p class="block-teaser">Tightly- and loosely-coupled accelerators for CRYSTALS on the X-HEEP microcontroller.</p>
+    <div class="block-detail">
+      <p>ATHOS was one of the first real-world uses of the CV-X-IF interface on the
+      CV32E40X core, adding new instructions and external IPs for NTT, INTT and Keccak into
+      the X-HEEP RISC-V microcontroller without touching the toolchain.</p>
+      <p>On ASIC 65 nm the full architecture costs a 1.47× area overhead while improving
+      total clock cycles for CRYSTALS-Kyber and CRYSTALS-Dilithium by up to 7.74× and
+      4.12× respectively over software.</p>
+      <div class="block-links">
+        <a href="https://github.com/edge-group-polito/ATHOS" target="_blank" rel="noopener">Repository ↗</a>
+        <a href="https://ieeexplore.ieee.org/abstract/document/10776955" target="_blank" rel="noopener">Paper ↗</a>
+      </div>
+    </div>
+  </details>
+
+  <details class="project-block">
+    <summary>KRONOS <span class="block-tag">Coprocessor · Keccak</span></summary>
+    <p class="block-teaser">A RISC-V Keccak co-processor shared across every NIST PQC standard.</p>
+    <div class="block-detail">
+      <p>Extends the ISA with three custom instructions over CV-X-IF, reused across
+      CRYSTALS-Kyber, CRYSTALS-Dilithium, SPHINCS+ and FALCON.</p>
+      <p>On a Xilinx Artix-7 FPGA: up to 75% fewer clock cycles for 19% resource overhead.</p>
+      <div class="block-links">
+        <a href="https://github.com/edge-group-polito/KRONOS/tree/coproc" target="_blank" rel="noopener">Repository ↗</a>
+        <a href="https://ieeexplore.ieee.org/abstract/document/11043433" target="_blank" rel="noopener">Paper ↗</a>
+      </div>
+    </div>
+  </details>
+
+  <details class="project-block">
+    <summary>LOKI <span class="block-tag">Accelerator · Kyber</span></summary>
+    <p class="block-teaser">Low-latency, open-source Kyber accelerator IPs for a RISC-V microcontroller.</p>
+    <div class="block-detail">
+      <p>Speeds up the polynomial multiplications and hash functions at the core of
+      CRYSTALS-Kyber key generation, encryption and decryption, integrated as an
+      accelerator into a RISC-V microcontroller.</p>
+      <div class="block-links">
+        <a href="https://github.com/edge-group-polito/LOKI" target="_blank" rel="noopener">Repository ↗</a>
+        <a href="https://link.springer.com/chapter/10.1007/978-3-031-48121-5_4" target="_blank" rel="noopener">Paper ↗</a>
+      </div>
+    </div>
+  </details>
+
+  <details class="project-block">
+    <summary>KALIPSO <span class="block-tag">Accelerator · NTT/INTT</span></summary>
+    <p class="block-teaser">A memory-mapped NTT/INTT accelerator for CRYSTALS-Kyber, tuned for low DMA overhead.</p>
+    <div class="block-detail">
+      <p>Targets the transfer overhead between the RISC-V core and the accelerator IP using
+      DMA. On an X-HEEP core it reaches up to 15.7× and 19.6× cycle-count improvement for
+      NTT and INTT respectively over software.</p>
+      <div class="block-links">
+        <a href="https://github.com/edge-group-polito/KALIPSO" target="_blank" rel="noopener">Repository ↗</a>
+        <a href="https://dl.acm.org/doi/abs/10.1145/3637543.3652872" target="_blank" rel="noopener">Paper ↗</a>
+      </div>
+    </div>
+  </details>
+
+  <details class="project-block">
+    <summary>VLSPQC <span class="block-tag">Library · PQC on RISC-V</span></summary>
+    <p class="block-teaser">Shared C library and test infrastructure for post-quantum primitives on RISC-V.</p>
+    <div class="block-detail">
+      <p>TODO: short description pending — flag to the team to fill in once available.</p>
+      <div class="block-links">
+        <a href="https://github.com/edge-group-polito/VLSPQC" target="_blank" rel="noopener">Repository ↗</a>
+      </div>
+    </div>
+  </details>
+
+  <details class="project-block">
+    <summary>keccak / keccak_integration <span class="block-tag">Keccak · SHA-3</span></summary>
+    <p class="block-teaser">Reference Keccak/SHA-3 implementations and their integration into RISC-V SoCs.</p>
+    <div class="block-detail">
+      <p>Software, hardware and hybrid Keccak/SHA-3 implementations compared across area,
+      frequency, clock cycles and efficiency, and integrated as an accelerator into the
+      PULPissimo RISC-V microcontroller for CRYSTALS-Kyber — with speedups up to 2.79× over
+      a plain software baseline at a 12.4% resource cost.</p>
+      <div class="block-links">
+        <a href="https://github.com/edge-group-polito/keccak" target="_blank" rel="noopener">keccak ↗</a>
+        <a href="https://github.com/edge-group-polito/keccak_integration" target="_blank" rel="noopener">keccak_integration ↗</a>
+        <a href="https://www.mdpi.com/2410-387X/7/4/60" target="_blank" rel="noopener">Paper ↗</a>
+      </div>
+    </div>
+  </details>
+
+  <details class="project-block wide">
+    <summary>cva6 <span class="block-tag">Work in progress · CV-X-IF</span></summary>
+    <p class="block-teaser">Integrating the team's cryptographic accelerators into the CVA6 application-class core.</p>
+    <div class="block-detail">
+      <p>CVA6 is a 6-stage, Linux-capable RISC-V core. The team is extending it with
+      cryptographic accelerators over CV-X-IF and evaluating them for power side-channel
+      leakage — RTL-level simulated power traces and FPGA measurements are compared using
+      Correlation/Differential Power Analysis to check whether tightly integrated
+      instruction pipelines leak information the ISE itself doesn't.</p>
+      <div class="block-links">
+        <a href="https://github.com/edge-group-polito/cva6" target="_blank" rel="noopener">Repository ↗</a>
+        <a href="https://ieeexplore.ieee.org/abstract/document/11219849/" target="_blank" rel="noopener">Related paper ↗</a>
+      </div>
+    </div>
+  </details>
+
+</div>

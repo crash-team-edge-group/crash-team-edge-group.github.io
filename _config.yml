@@ -1,0 +1,28 @@
+title: CRASH Team
+tagline: Cryptographic Hardware, RISC-V and Security research within the EDGE Group at
+  the Dipartimento di Elettronica e Telecomunicazioni, Politecnico di Torino.
+description: CRASH Team @ EDGE Group, Dipartimento di Elettronica e Telecomunicazioni (DET), Politecnico di Torino.
+url: https://crash-team-edge-group.github.io
+github_org: edge-group-polito
+
+# Nav bar. Add a page -> add a line here.
+nav:
+  - title: Research
+    url: /research/
+  - title: Projects
+    url: /projects/
+  - title: Articles
+    url: /articles/
+  - title: People
+    url: /people/
+
+# The team's repositories live under the edge-group-polito GitHub org (no separate
+# crash-team org exists). The list below is curated by hand from the crash-team GitHub
+# team, since a topic-based org-wide fetch would also pull in repos from other teams.
+# See _data/repos.yml.
+
+permalink: /articles/:title/
+
+exclude:
+  - CLAUDE.md
+  - README.md

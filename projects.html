@@ -1,0 +1,67 @@
+---
+layout: default
+title: Projects
+permalink: /projects/
+---
+
+<p class="lede">Public repositories from the CRASH team, part of the
+  <a href="https://github.com/{{ site.github_org }}">EDGE Group organization</a> on GitHub.
+  The list is curated by hand in <code>_data/repos.yml</code> — see
+  <a href="https://github.com/orgs/{{ site.github_org }}/teams/crash-team/repositories">the team page</a>
+  for the source of truth.</p>
+
+<h3>Active</h3>
+<div id="repos-active"><p>Loading…</p></div>
+
+<h3>Work in progress</h3>
+<div id="repos-wip"><p>Loading…</p></div>
+
+<script>
+const ORG = {{ site.github_org | jsonify }};
+const REPOS = {{ site.data.repos | jsonify }};
+
+const esc = s => (s ?? "").replace(/[<>&"]/g, c => ({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
+
+function card(r) {
+  if (r.error) {
+    return `<div class="card">
+      <span class="name">${esc(r.name)}</span>
+      <p>${esc(r.description)}</p>
+      <p><em>Not publicly visible right now.</em></p>
+    </div>`;
+  }
+  return `<div class="card">
+    <a class="name" href="${esc(r.html_url)}">${esc(r.name)}</a>
+    <p>${esc(r.description)}</p>
+    <div class="meta">
+      ${r.language ? `<span>${esc(r.language)}</span>` : ""}
+      <span>★ ${r.stargazers_count}</span>
+      ${r.archived ? `<span class="tag">archived</span>` : ""}
+    </div>
+  </div>`;
+}
+
+function render(id, repos) {
+  const el = document.getElementById(id);
+  el.innerHTML = repos.length
+    ? `<div class="grid">${repos.map(card).join("")}</div>`
+    : "<p>None right now.</p>";
+}
+
+// The description always comes from _data/repos.yml (a hand-written summary), never from
+// the live API response — GitHub's one-line repo description isn't enough detail here.
+Promise.all(REPOS.map(r =>
+  fetch(`https://api.github.com/repos/${ORG}/${r.name}`)
+    .then(res => res.ok ? res.json() : { name: r.name, error: true })
+    .catch(() => ({ name: r.name, error: true }))
+    .then(data => Object.assign({}, data, { status: r.status, description: r.description }))
+)).then(results => {
+  render("repos-active", results.filter(r => r.status !== "wip"));
+  render("repos-wip", results.filter(r => r.status === "wip"));
+}).catch(() => {
+  document.getElementById("repos-active").innerHTML =
+    `<p>Could not load repositories. See them on
+     <a href="https://github.com/${ORG}">GitHub</a>.</p>`;
+  document.getElementById("repos-wip").innerHTML = "";
+});
+</script>

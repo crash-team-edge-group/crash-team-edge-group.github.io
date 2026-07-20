@@ -1,0 +1,77 @@
+# Curated by hand from the crash-team GitHub team (github.com/orgs/edge-group-polito/teams/crash-team).
+# `status: wip` repos render in a separate "Work in progress" section on /projects/.
+# `description:` is a hand-written summary shown on the card INSTEAD of the GitHub repo's
+# one-line description — projects.html still fetches the live API for stars/language/
+# archived-status/URL, but always overrides the description with this text.
+# Add a repo -> add one entry here. Remove one -> delete its entry. Nothing else to touch.
+- name: CHIMERA
+  status: active
+  description: >-
+    An Application-Specific Instruction-Set Processor (ASIP) that runs the ASCON
+    lightweight-cryptography standard on RISC-V over the Core-V eXtension Interface
+    (CV-X-IF). Supports AEAD (Ascon-128/128a) and hashing (Hash/Hasha) in two variants —
+    a tightly-coupled Complete-Round accelerator for speed, and a lean Bitwise-Rotation-Unit
+    instruction extension for area — implemented on both FPGA and ASIC.
+- name: HORCRUX
+  status: active
+  description: >-
+    A single lightweight RISC-V instruction-set extension covering every NIST-approved
+    post-quantum algorithm family (ML-KEM, ML-DSA, SLH-DSA, HQC) instead of one accelerator
+    per scheme. A tightly-coupled coprocessor targets the shared bottlenecks — modular
+    arithmetic, matrix multiplication, hashing — reaching up to 30× speedups on FPGA with a
+    footprint under 2,900 LUTs.
+- name: CIRCE
+  status: active
+  description: >-
+    A RISC-V extension for the CROSS code-based post-quantum signature scheme, integrated
+    through CV-X-IF. Supports every official R-SDP and R-SDP(G) parameter set with no
+    hardware retuning, doubling throughput on FPGA in an ultra-compact footprint (down to
+    800 LUTs).
+- name: KRONOS
+  status: active
+  description: >-
+    A Keccak co-processor shared across the hashing needs of CRYSTALS-Kyber,
+    CRYSTALS-Dilithium, SPHINCS+ and FALCON, exposed to a RISC-V core as three custom
+    CV-X-IF instructions. Cuts clock cycles by up to 75% on FPGA for a 19% resource
+    overhead.
+- name: ATHOS
+  status: active
+  description: >-
+    One of the first real applications of the CV-X-IF interface: hybrid tightly- and
+    loosely-coupled accelerators for NTT, INTT and Keccak added to the X-HEEP RISC-V
+    microcontroller. Improves CRYSTALS-Kyber and CRYSTALS-Dilithium clock cycles by up to
+    7.74× and 4.12× on silicon (ASIC 65 nm) for a 1.47× area cost.
+- name: LOKI
+  status: active
+  description: >-
+    Low-latency, open-source Kyber accelerator IPs for polynomial multiplication and
+    hashing, integrated into a RISC-V microcontroller to speed up CRYSTALS-Kyber key
+    generation, encryption and decryption.
+- name: KALIPSO
+  status: active
+  description: >-
+    A memory-mapped NTT/INTT accelerator for CRYSTALS-Kyber tuned to minimize DMA transfer
+    overhead between the RISC-V core and the IP, reaching up to 19.6× cycle-count
+    improvement over software on X-HEEP.
+- name: VLSPQC
+  status: active
+  description: "TODO: short description pending — flag to the team to fill in once available."
+- name: keccak
+  status: active
+  description: >-
+    Software, hardware and hybrid reference implementations of the Keccak/SHA-3 hash
+    function, compared across area, frequency and efficiency to guide the accelerators
+    built on top of it.
+- name: keccak_integration
+  status: active
+  description: >-
+    Integration of a Keccak/SHA-3 accelerator into the PULPissimo RISC-V microcontroller
+    for CRYSTALS-Kyber, reaching up to 2.79× speedup over software at a 12.4% resource
+    cost — also used as the verification case study for the team's SoC-level reuse
+    toolchain.
+- name: cva6
+  status: wip
+  description: >-
+    Integrating the team's cryptographic accelerators into CVA6, a 6-stage Linux-capable
+    RISC-V core, over CV-X-IF — and evaluating whether the resulting instruction pipeline
+    leaks information through power side channels.
