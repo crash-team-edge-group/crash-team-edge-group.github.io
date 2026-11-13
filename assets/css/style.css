@@ -1,4 +1,4 @@
-/* Graphite + amber theme with Computer Modern fonts. Fixed dark theme, not a toggle. */
+/* Graphite + amber theme, Karla font. Fixed dark theme, not a toggle. */
 :root {
   --bg: #0e1013; --fg: #ecebe6; --muted: #a3a8ae;
   --line: #2a2f36; --card: #16191e;
@@ -7,13 +7,14 @@
   --accent-ink: #0e1013;  /* text on amber fills */
   --teal: var(--accent); --gold: var(--accent); --coral: var(--accent);
   --logo-filter: none;
-  --font-text: "CMU Serif", Georgia, serif;
-  --font-mono: "CMU Typewriter Text", monospace;
+  --font-text: "Karla", -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-head: var(--font-text);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 * { box-sizing: border-box; }
 body {
   margin: 0; background: var(--bg); color: var(--fg);
-  font: 18px/1.6 var(--font-text);
+  font: 17px/1.65 var(--font-text);
 }
 .wrap { max-width: 960px; margin: 0 auto; padding: 0 1.25rem; }
 a { color: var(--link); }
@@ -45,7 +46,7 @@ header.site nav a:hover { color: var(--fg); }
 header.site nav a.here { color: var(--fg); font-weight: 600; border-bottom-color: var(--accent); }
 
 main { min-height: 60vh; padding-bottom: 4rem; }
-h1, h2, h3 { font-weight: 700; }
+h1, h2, h3 { font-family: var(--font-head); font-weight: 800; letter-spacing: -.02em; }
 h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); letter-spacing: -.02em; margin: 0 0 1.5rem; }
 h2 { font-size: 1.4rem; letter-spacing: -.01em; margin: 2.5rem 0 .75rem; }
 h3 { font-size: .85rem; margin: 2.5rem 0 .9rem; text-transform: uppercase;
@@ -64,8 +65,8 @@ h3 { font-size: .85rem; margin: 2.5rem 0 .9rem; text-transform: uppercase;
 .hero-logos { display: flex; align-items: stretch; gap: 2.5rem; }
 .hero-crash { height: clamp(90px, 16vw, 150px); width: auto; filter: var(--logo-filter); }
 .hero-edge { height: clamp(100px, 17vw, 165px); width: auto; filter: var(--logo-filter); }
-.hero-text .hero-kicker { font-family: var(--font-mono); font-size: .8rem; text-transform: uppercase;
-                          letter-spacing: .08em; color: var(--accent); margin: 0 0 .6rem; }
+.hero-text .hero-kicker { font-family: var(--font-text); font-weight: 700; font-size: .8rem; text-transform: uppercase;
+                          letter-spacing: .1em; color: var(--accent); margin: 0 0 .6rem; }
 .hero-text p { color: var(--muted); margin: 0; max-width: 56ch; font-size: 1.15rem; }
 .hero-text p strong { color: var(--fg); }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -95,8 +96,8 @@ h3 { font-size: .85rem; margin: 2.5rem 0 .9rem; text-transform: uppercase;
 .card p { margin: 0; font-size: .9rem; color: var(--muted); }
 .card .meta { font-size: .8rem; color: var(--muted); display: flex; gap: .8rem;
               margin-top: auto; padding-top: .5rem; align-items: center; flex-wrap: wrap; }
-.card .meta .tag { font-family: var(--font-mono); border: 1px solid var(--line); border-radius: 20px; padding: 0 .5rem;
-                   font-size: .7rem; text-transform: uppercase; letter-spacing: .04em; }
+.card .meta .tag { font-family: var(--font-text); font-weight: 700; letter-spacing: .1em; border: 1px solid var(--line); border-radius: 20px; padding: 0 .5rem;
+                   font-size: .7rem; text-transform: uppercase; }
 .card .meta .tag.wip { border-color: var(--gold); color: var(--gold); }
 
 /* rotate the top accent colour across the palette so the page doesn't read as monochrome */
@@ -202,8 +203,8 @@ ul.publications { list-style: none; padding: 0; display: flex; flex-direction: c
 }
 .project-block summary::-webkit-details-marker { display: none; }
 .project-block summary .block-tag {
-  font-family: var(--font-mono);
-  font-weight: 500; font-size: .72rem; text-transform: uppercase; letter-spacing: .05em;
+  font-family: var(--font-text);
+  font-weight: 700; font-size: .72rem; text-transform: uppercase; letter-spacing: .1em;
   color: var(--muted); white-space: nowrap;
 }
 .project-block summary::after { content: "+"; color: var(--accent); font-size: 1.3rem;
