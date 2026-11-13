@@ -39,12 +39,12 @@ permalink: /people/
     <a class="person-link" href="https://www.linkedin.com/in/valeria-piscopo-4aa88b256/" target="_blank" rel="noopener"><img src="/assets/img/linkedin.png" alt="" class="linkedin-icon"> LinkedIn ↗</a>
   </li>
   <li class="person">
-    <img class="person-photo" src="/photo/people/omino.png" alt="Mattia Mirigaldi">
+    <img class="person-photo" src="/photo/people/mattia.jpeg" alt="Mattia Mirigaldi">
     <span class="person-name">Mattia Mirigaldi</span>
     <a class="person-link" href="https://www.linkedin.com/in/mattia-mirigaldi-8109b9201/" target="_blank" rel="noopener"><img src="/assets/img/linkedin.png" alt="" class="linkedin-icon"> LinkedIn ↗</a>
   </li>
   <li class="person">
-    <img class="person-photo" src="/photo/people/omino.png" alt="Enrico Manfredi">
+    <img class="person-photo" src="/photo/people/enrico.jpeg" alt="Enrico Manfredi">
     <span class="person-name">Enrico Manfredi</span>
     <a class="person-link" href="https://www.linkedin.com/in/enrico-manfredi-662a10357/" target="_blank" rel="noopener"><img src="/assets/img/linkedin.png" alt="" class="linkedin-icon"> LinkedIn ↗</a>
   </li>
@@ -52,5 +52,10 @@ permalink: /people/
     <img class="person-photo" src="/photo/people/barrera_foto.jpg" alt="Alessandro Barrera">
     <span class="person-name">Alessandro Barrera</span>
     <a class="person-link" href="https://www.linkedin.com/in/alessandro-barrera-584478275/" target="_blank" rel="noopener"><img src="/assets/img/linkedin.png" alt="" class="linkedin-icon"> LinkedIn ↗</a>
+  </li>
+  <li class="person">
+    <img class="person-photo" src="/photo/people/sabina.jpeg" alt="Sabina Sarcuni">
+    <span class="person-name">Sabina Sarcuni</span>
+    <a class="person-link" href="https://www.linkedin.com/in/sabina-sarcuni/" target="_blank" rel="noopener"><img src="/assets/img/linkedin.png" alt="" class="linkedin-icon"> LinkedIn ↗</a>
   </li>
 </ul>
