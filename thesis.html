@@ -31,15 +31,20 @@ description: Thesis proposals offered by the CRASH team.
         {% endif %}
         {% if t.prerequisites %}<p><strong>Prerequisites:</strong> {{ t.prerequisites }}</p>{% endif %}
         <h3>Supervisors</h3>
+        {% capture all_mails %}{% for s in t.supervisors %}{{ s.email }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
         <ul class="thesis-supervisors">
           {% for s in t.supervisors %}
           <li>
             <span class="thesis-sup-name">{{ s.name }}</span>
+            <span class="thesis-sup-mail">{{ s.email }}</span>
             <button type="button" class="copy-mail" data-email="{{ s.email }}" title="Copy email address">Copy email</button>
-            <a class="thesis-mailto" href="mailto:{{ s.email }}?subject={{ t.title | uri_escape }}">open mail app</a>
           </li>
           {% endfor %}
         </ul>
+        <div class="thesis-actions">
+          <a class="thesis-mailall" href="mailto:{{ all_mails }}?subject={{ t.title | uri_escape }}">&#9993; Open mail app (all supervisors)</a>
+          <button type="button" class="copy-mail" data-email="{{ all_mails | replace: ',', ', ' }}" title="Copy all supervisor addresses">Copy all emails</button>
+        </div>
       </div>
     </details>
   </li>
