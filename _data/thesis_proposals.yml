@@ -1,6 +1,6 @@
 # One entry per thesis proposal. Add a new "- title:" block to add a proposal.
 # supervisors / contacts: name + email (the email is copied to the clipboard on click).
-- title: "Post-Quantum Key Exchange for IoT Devices"
+- title: "Post-Quantum Secure Messages for IoT Devices"
   subtitle: "Classical, hybrid and post-quantum EDHOC + OSCORE on a RISC-V MCU"
   summary: "Implement and measure classical, hybrid and post-quantum EDHOC + OSCORE on the X-HEEP RISC-V platform, then quantify the gain from our ML-KEM and Keccak accelerators."
   prerequisites: "C, cryptography"
@@ -22,3 +22,72 @@
       email: "alessandra.dolmeta@polito.it"
     - name: "Valeria Piscopo"
       email: "valeria.piscopo@polito.it"
+
+- title: "Post-Quantum Device Identity: Proving a Chip Is Genuine"
+  subtitle: "DICE boot layers with ML-DSA keys on an open RISC-V core"
+  summary: "Build DICE attestation with post-quantum ML-DSA keys on the Ibex RISC-V core, so a server can verify that a device is genuine and runs untouched firmware."
+  prerequisites: "C, cryptography"
+  motivations:
+    - "A server must know that a remote device is authentic and runs untouched firmware."
+    - "With DICE, the chip measures its own firmware at every boot and derives its identity key from it: change the firmware, and the identity changes."
+    - "Today these identity keys are classical (ECC) and will not resist quantum computers."
+  outcomes:
+    - "DICE boot layers with post-quantum ML-DSA keys on Ibex."
+    - "Certificates and an attestation report, checked by a PC verifier."
+    - "Time and memory measured per layer, showing where hardware support helps."
+  plan:
+    - "Study: DICE, ML-DSA, Ibex"
+    - "Build: DICE layers with ML-DSA keys"
+    - "Attest: certificates and PC verifier"
+    - "Measure: time and memory per layer"
+  supervisors:
+    - name: "Alessandra Dolmeta"
+      email: "alessandra.dolmeta@polito.it"
+    - name: "Valeria Piscopo"
+      email: "valeria.piscopo@polito.it"
+
+- title: "Post-Quantum Security for Satellite Links"
+  subtitle: "Quantum-safe key renewal in orbit for CCSDS SDLS"
+  summary: "Emulate a satellite and a ground station, add post-quantum key renewal (ML-KEM) and authentication (ML-DSA) to CCSDS SDLS, then port it to RISC-V."
+  prerequisites: "C, Linux, cryptography"
+  motivations:
+    - "Satellites are commanded over radio links protected by CCSDS SDLS, with keys loaded before launch."
+    - "A satellite flies for 10–15+ years, so it needs a way to renew its keys in orbit."
+    - "That renewal must resist quantum computers."
+  outcomes:
+    - "Emulated satellite and ground station (NASA cFS, COSMOS, CryptoLib)."
+    - "Post-quantum key renewal (ML-KEM) and authentication (ML-DSA) added."
+    - "Overhead and latency measured against today's SDLS, then ported to RISC-V."
+  plan:
+    - "Study: CCSDS SDLS, cFS, COSMOS, CryptoLib"
+    - "Emulate: satellite and ground station"
+    - "Add: ML-KEM key renewal and ML-DSA authentication"
+    - "Measure, then port to RISC-V"
+  supervisors:
+    - name: "Alessandra Dolmeta"
+      email: "alessandra.dolmeta@polito.it"
+    - name: "Enrico Manfredi"
+      email: "enrico.manfredi@polito.it"
+
+- title: "HERMIT: Protecting Only What Must Be Protected"
+  subtitle: "Side-channel protection with our masked RISC-V coprocessor"
+  summary: "Write crypto code for RISC-V, move only its secret-dependent parts to HERMIT, our masked coprocessor, and verify the protection with real power measurements."
+  prerequisites: "C, RISC-V assembly"
+  motivations:
+    - "An attacker holding a device can read its secret key from the power it consumes."
+    - "Masking (splitting every secret into random shares) stops this, but in software it is slow."
+    - "HERMIT, our masked RISC-V coprocessor, does masking in hardware, for any RISC-V core."
+  outcomes:
+    - "Crypto code for RISC-V: KMAC and Ascon, then SLH-DSA and AES."
+    - "Secret-dependent parts identified and moved to HERMIT."
+    - "Protection verified with power measurements on FPGA (ChipWhisperer)."
+  plan:
+    - "Write: KMAC and Ascon on RISC-V"
+    - "Analyse: which parts touch secrets"
+    - "Offload: those parts to HERMIT"
+    - "Attack: power analysis on FPGA, then SLH-DSA and AES"
+  supervisors:
+    - name: "Alessandra Dolmeta"
+      email: "alessandra.dolmeta@polito.it"
+    - name: "Federico Runco (contact)"
+      email: "federico.runco@esterni.polito.it"

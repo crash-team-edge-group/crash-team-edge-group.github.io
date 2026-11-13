@@ -1,0 +1,29 @@
+# Thesis offers from industrial partners. Either "topics" (a list) or "open_call" (free text).
+# contacts: name + email (the email is copied to the clipboard on click).
+- partner: "Telsy"
+  about: "Crypto Engineering team, TIM Group — Embedded Software & FPGA proposals 2027"
+  topics:
+    - title: "Custom & Trusted FPGA Secure Boot"
+      description: "Vendor-independent crypto engines that authenticate and protect the bitstream, using partial reconfiguration."
+      requirements: "FPGA, VHDL"
+    - title: "TrustZone on Arm Cortex-M"
+      description: "Configure TrustZone on an STM32 and expose secure-world crypto APIs to the non-secure world."
+      requirements: "C"
+    - title: "ISA Extension on Nios V"
+      description: "Custom instructions on Altera's RISC-V soft core (Nios V/g) that call hardware logic to speed up critical crypto."
+      requirements: "FPGA, VHDL, C"
+    - title: "FPGA Hardware Accelerator over PCIe"
+      description: "Cyclone 10 GX board as a hardware-in-the-loop crypto accelerator, with its protocol and PC driver."
+      requirements: "FPGA, VHDL, Linux"
+  contacts:
+    - { name: "Alessandra Dolmeta", email: "alessandra.dolmeta@polito.it" }
+    - { name: "Marco Lavena", email: "marco.lavena@telsy.it" }
+    - { name: "Gabriele Coppolino", email: "gabriele.coppolino@telsy.it" }
+    - { name: "Guglielmo Morgari", email: "guglielmo.morgari@telsy.it" }
+- partner: "Security Pattern"
+  about: "Italian scale-up (2017) building security solutions for embedded systems and IoT — ASIC, FPGA and microcontrollers. First Italian cybersecurity company certified to IEC 62443-4-1."
+  open_call: "Available for theses on security for embedded devices: write with your CV and the topics you are interested in."
+  website: "https://securitypattern.com"
+  contacts:
+    - { name: "Alessandra Dolmeta", email: "alessandra.dolmeta@polito.it" }
+    - { name: "Security Pattern", email: "hello@securitypattern.com" }

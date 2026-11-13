@@ -273,3 +273,10 @@ ul.thesis-supervisors { list-style: none; padding: 0; }
 .copy-mail.copied { border-color: var(--teal); color: var(--teal); background: transparent; }
 
 code, pre, kbd { font-family: var(--font-mono); }
+ul.partner-topics { list-style: none; padding: 0; }
+.partner-topics li { margin: 0 0 .9rem; }
+.partner-topics li::marker { content: ""; }
+.partner-topic-title, .partner-topic-desc, .partner-topic-req { display: block; }
+.thesis-body .partner-topic-title { color: var(--fg); }
+.partner-topic-desc { color: var(--muted); font-size: .92rem; }
+.partner-topic-req { font-size: .85rem; }
