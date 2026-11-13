@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
 <meta name="description" content="{{ page.description | default: site.description }}">
+<link rel="stylesheet" href="{{ '/assets/css/fonts.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 <body>
@@ -13,8 +14,9 @@
   <div class="wrap">
     <a class="brand" href="{{ '/' | relative_url }}">
       <span class="logo-pair">
-        <img src="{{ '/assets/img/crash-logo.png' | relative_url }}" alt="CRASH" class="brand-logo crash-logo">
-        <img src="{{ '/assets/img/edge-logo.png' | relative_url }}" alt="EDGE Group" class="brand-logo edge-logo invert-on-light">
+        <img src="{{ '/assets/img/crash-mark.png' | relative_url }}" alt="CRASH" class="brand-logo crash-logo">
+        <span class="logo-div" aria-hidden="true"></span>
+        <img src="{{ '/assets/img/edge-logo.png' | relative_url }}" alt="EDGE Group" class="brand-logo edge-logo">
       </span>
       <span class="brand-title">CRASH <span class="brand-sub">/ EDGE Group</span></span>
     </a>

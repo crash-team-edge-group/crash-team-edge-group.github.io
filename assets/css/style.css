@@ -1,51 +1,51 @@
-/* Fixed black theme, on purpose: CRASH's own mark (crash-logo.png) is opaque black,
-   and the site background is tuned to the exact same black (#000) so the logo's edges
-   disappear into the header instead of showing as a box. Not a light/dark toggle. */
+/* Graphite + amber theme with Computer Modern fonts. Fixed dark theme, not a toggle. */
 :root {
-  --bg: #000000; --fg: #eef3f6; --muted: #93a5b2;
-  --line: #23303a; --card: #0c1116;
-  --accent: #669bbc;      /* brand steel blue - fills, borders, buttons */
-  --link: #8fc4e0;        /* lighter tint of accent, for readable text links on black */
-  --teal: #59c2b6; --gold: #e8b45f; --coral: #e88a6c;
-  --hero-from: #669bbc; --hero-to: #16333f; --hero-fg: #ffffff;
+  --bg: #0e1013; --fg: #ecebe6; --muted: #a3a8ae;
+  --line: #2a2f36; --card: #16191e;
+  --accent: #ffb627;      /* amber - the single accent */
+  --link: #ffcc66;        /* lighter amber for text links */
+  --accent-ink: #0e1013;  /* text on amber fills */
+  --teal: var(--accent); --gold: var(--accent); --coral: var(--accent);
+  --logo-filter: none;
+  --font-text: "CMU Serif", Georgia, serif;
+  --font-mono: "CMU Typewriter Text", monospace;
 }
 * { box-sizing: border-box; }
 body {
   margin: 0; background: var(--bg); color: var(--fg);
-  font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font: 18px/1.6 var(--font-text);
 }
 .wrap { max-width: 960px; margin: 0 auto; padding: 0 1.25rem; }
 a { color: var(--link); }
 img { max-width: 100%; height: auto; }
 
-/* edge-logo.png is white ink on transparent: shows as-is on our black background.
+/* edge-logo.png is white ink on transparent: shows as-is on our dark background.
    github.png is black ink on transparent: needs inverting to white to stay visible. */
 .invert-on-light { filter: none; }
 .invert-on-dark { filter: invert(1); }
 
 header.site {
-  border-bottom: 3px solid transparent;
-  border-image: linear-gradient(90deg, var(--accent), var(--teal), var(--gold), var(--coral)) 1;
+  border-bottom: 1px solid var(--line);
   padding: 1.1rem 0; margin-bottom: 2.5rem; background: var(--bg);
 }
 header.site .wrap { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
                     justify-content: space-between; }
-.brand { font-weight: 700; font-size: 1.05rem; text-decoration: none; color: var(--fg);
-         display: inline-flex; align-items: center; gap: .7rem; }
-.logo-pair { display: inline-flex; align-items: center; gap: .45rem; }
-.crash-logo {
-  height: 2rem; width: auto; border-radius: 6px; display: block;
-}
-.edge-logo { height: 1.6rem; width: auto; display: block; }
-.brand-title { white-space: nowrap; }
-.brand-sub { color: var(--muted); font-weight: 500; }
-header.site nav a { margin-left: 1.1rem; text-decoration: none; color: var(--muted); font-size: .95rem;
+.brand { font-weight: 700; text-decoration: none; color: var(--fg);
+         display: inline-flex; align-items: center; }
+.logo-pair { display: inline-flex; align-items: stretch; gap: 1rem; }
+.brand-logo { filter: var(--logo-filter); }
+.crash-logo { height: 3.1rem; width: auto; display: block; }
+.edge-logo { height: 3.4rem; width: auto; display: block; }
+.logo-div { width: 1px; background: var(--line); align-self: stretch; flex: none; }
+.brand-title { display: none; }
+header.site nav { display: flex; flex-wrap: wrap; gap: .3rem 1.1rem; }
+header.site nav a { text-decoration: none; color: var(--muted); font-size: .95rem;
                      padding-bottom: .2rem; border-bottom: 2px solid transparent; }
-header.site nav a:first-child { margin-left: 0; }
 header.site nav a:hover { color: var(--fg); }
 header.site nav a.here { color: var(--fg); font-weight: 600; border-bottom-color: var(--accent); }
 
 main { min-height: 60vh; padding-bottom: 4rem; }
+h1, h2, h3 { font-weight: 700; }
 h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); letter-spacing: -.02em; margin: 0 0 1.5rem; }
 h2 { font-size: 1.4rem; letter-spacing: -.01em; margin: 2.5rem 0 .75rem; }
 h3 { font-size: .85rem; margin: 2.5rem 0 .9rem; text-transform: uppercase;
@@ -53,14 +53,28 @@ h3 { font-size: .85rem; margin: 2.5rem 0 .9rem; text-transform: uppercase;
 
 .lede { font-size: 1.2rem; color: var(--muted); max-width: 55ch; }
 
-/* Hero banner - the colorful gradient panel that replaces a flat black/white intro */
+/* Hero: dark card, faint dot grid, amber bar on the left edge */
 .hero {
-  background: linear-gradient(135deg, var(--hero-from), var(--hero-to));
-  color: var(--hero-fg); border-radius: 16px; padding: 2.5rem 2rem;
-  margin: 0 0 2.5rem; display: flex; align-items: center; gap: 1.75rem; flex-wrap: wrap;
+  position: relative; overflow: hidden;
+  background: radial-gradient(circle, rgba(255,255,255,.07) 1px, transparent 1.5px) 0 0 / 18px 18px, var(--card);
+  border: 1px solid var(--line); border-radius: 16px; padding: 2.5rem 2rem 2.5rem 2.5rem;
+  margin: 0 0 2.5rem; display: flex; flex-direction: column; gap: 1.75rem;
 }
-.hero-text h1 { color: var(--hero-fg); margin-bottom: .5rem; }
-.hero-text p { color: rgba(255,255,255,.88); margin: 0; max-width: 56ch; font-size: 1.08rem; }
+.hero::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: var(--accent); }
+.hero-logos { display: flex; align-items: stretch; gap: 2.5rem; }
+.hero-crash { height: clamp(90px, 16vw, 150px); width: auto; filter: var(--logo-filter); }
+.hero-edge { height: clamp(100px, 17vw, 165px); width: auto; filter: var(--logo-filter); }
+.hero-text .hero-kicker { font-family: var(--font-mono); font-size: .8rem; text-transform: uppercase;
+                          letter-spacing: .08em; color: var(--accent); margin: 0 0 .6rem; }
+.hero-text p { color: var(--muted); margin: 0; max-width: 56ch; font-size: 1.15rem; }
+.hero-text p strong { color: var(--fg); }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 600px) {
+  .hero { padding: 1.5rem 1.25rem 1.5rem 1.6rem; }
+  .hero-logos { gap: 1.25rem; }
+  .crash-logo { height: 2.3rem; } .edge-logo { height: 2.5rem; }
+  .logo-pair { gap: .7rem; }
+}
 
 .focus-list { list-style: none; padding: 0; margin: 1rem 0 0; display: flex;
               flex-direction: column; gap: .65rem; }
@@ -81,7 +95,7 @@ h3 { font-size: .85rem; margin: 2.5rem 0 .9rem; text-transform: uppercase;
 .card p { margin: 0; font-size: .9rem; color: var(--muted); }
 .card .meta { font-size: .8rem; color: var(--muted); display: flex; gap: .8rem;
               margin-top: auto; padding-top: .5rem; align-items: center; flex-wrap: wrap; }
-.card .meta .tag { border: 1px solid var(--line); border-radius: 20px; padding: 0 .5rem;
+.card .meta .tag { font-family: var(--font-mono); border: 1px solid var(--line); border-radius: 20px; padding: 0 .5rem;
                    font-size: .7rem; text-transform: uppercase; letter-spacing: .04em; }
 .card .meta .tag.wip { border-color: var(--gold); color: var(--gold); }
 
@@ -188,6 +202,7 @@ ul.publications { list-style: none; padding: 0; display: flex; flex-direction: c
 }
 .project-block summary::-webkit-details-marker { display: none; }
 .project-block summary .block-tag {
+  font-family: var(--font-mono);
   font-weight: 500; font-size: .72rem; text-transform: uppercase; letter-spacing: .05em;
   color: var(--muted); white-space: nowrap;
 }
@@ -217,7 +232,7 @@ footer { border-top: 1px solid var(--line); padding: 1.5rem 1.25rem 3rem;
 ul.thesis-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.25rem; }
 .thesis {
   border: 1px solid var(--line); border-radius: 12px; padding: 1.2rem 1.4rem;
-  background: linear-gradient(135deg, rgba(102,155,188,.14), var(--card) 55%);
+  background: var(--card);
   border-left: 5px solid var(--gold);
 }
 .thesis-main summary { cursor: pointer; list-style: none; }
@@ -230,7 +245,7 @@ ul.thesis-list { list-style: none; padding: 0; display: flex; flex-direction: co
 .thesis-body { margin: 1.1rem 0 0; font-size: .95rem; }
 .thesis-body h3 {
   display: inline-block; font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em;
-  margin: 1.3rem 0 .5rem; padding: .15rem .7rem; border-radius: 20px; color: #000; background: var(--accent);
+  margin: 1.3rem 0 .5rem; padding: .15rem .7rem; border-radius: 20px; color: var(--accent-ink); background: var(--accent);
 }
 .thesis-body h3:nth-of-type(2) { background: var(--teal); }
 .thesis-body h3:nth-of-type(3) { background: var(--gold); }
@@ -245,7 +260,7 @@ ul.thesis-supervisors { list-style: none; padding: 0; }
 .thesis-sup-mail { color: var(--muted); font-size: .85rem; }
 .thesis-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .9rem; align-items: center; }
 .thesis-mailall {
-  font-weight: 700; text-decoration: none; color: #000; background: var(--gold);
+  font-weight: 700; text-decoration: none; color: var(--accent-ink); background: var(--gold);
   border-radius: 20px; padding: .35rem 1rem;
 }
 .thesis-mailall:hover { filter: brightness(1.1); }
@@ -253,5 +268,7 @@ ul.thesis-supervisors { list-style: none; padding: 0; }
   font: inherit; font-size: .85rem; font-weight: 600; cursor: pointer; color: var(--fg); background: transparent;
   border: 1px solid var(--accent); border-radius: 20px; padding: .2rem .9rem;
 }
-.copy-mail:hover { background: var(--accent); color: #000; }
+.copy-mail:hover { background: var(--accent); color: var(--accent-ink); }
 .copy-mail.copied { border-color: var(--teal); color: var(--teal); background: transparent; }
+
+code, pre, kbd { font-family: var(--font-mono); }
