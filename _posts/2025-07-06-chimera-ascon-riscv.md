@@ -4,7 +4,7 @@ title: "CHIMERA: Cryptographic Hardware for Integrated Multipurpose Engine on RI
 date: 2025-07-06
 authors: "Alessandra Dolmeta, Valeria Piscopo, Maurizio Martina, Guido Masera"
 citation: "2025 IEEE Computer Society Annual Symposium on VLSI (ISVLSI), pp. 1-6, 2025"
-paper_url: https://scholar.google.com/citations?view_op=view_citation&hl=it&user=8SRb1IsAAAAJ&citation_for_view=8SRb1IsAAAAJ:ufrVoPGSRksC
+paper_url: https://doi.org/10.1109/ISVLSI65124.2025.11130264
 repo_url: https://github.com/edge-group-polito/CHIMERA
 ---
 

@@ -4,7 +4,7 @@ title: "HORCRUX - A Lightweight PQC-RISC-V eXtension Architecture"
 date: 2025-10-20
 authors: "Alessandra Dolmeta, Valeria Piscopo, Guido Masera, Maurizio Martina, Michael Hutter"
 citation: "Cryptology ePrint Archive, Paper 2025/1934, 2025"
-paper_url: https://scholar.google.com/citations?view_op=view_citation&hl=it&user=8SRb1IsAAAAJ&citation_for_view=8SRb1IsAAAAJ:_FxGoFyzp5QC
+paper_url: https://eprint.iacr.org/2025/1934
 repo_url: https://github.com/edge-group-polito/HORCRUX/tree/cup
 ---
 

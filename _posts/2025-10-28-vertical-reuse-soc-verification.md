@@ -4,7 +4,7 @@ title: "Towards Achieving Vertical Reuse in SoC-Level Verification"
 date: 2025-10-28
 authors: "Petr Bardonek, Alessandra Dolmeta, Marcela Zachariášová, Guido Masera"
 citation: "2025 IEEE Nordic Circuits and Systems Conference (NorCAS), pp. 1-7, 2025"
-paper_url: https://scholar.google.com/citations?view_op=view_citation&hl=it&user=8SRb1IsAAAAJ&citation_for_view=8SRb1IsAAAAJ:Se3iqnhoufwC
+paper_url: https://ieeexplore.ieee.org/document/11231287
 repo_url: https://github.com/edge-group-polito/keccak_integration
 ---
 

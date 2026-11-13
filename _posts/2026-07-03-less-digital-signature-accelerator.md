@@ -4,7 +4,7 @@ title: "A Lightweight Accelerator for the LESS Digital Signature Scheme"
 date: 2026-07-03
 authors: "Giuseppe Cutrera, Alessandra Dolmeta, Valeria Piscopo, Maurizio Martina, Guido Masera"
 citation: "Cryptography, vol. 10, no. 4, article 45, 2026"
-paper_url: https://scholar.google.com/citations?view_op=view_citation&hl=it&user=8SRb1IsAAAAJ&citation_for_view=8SRb1IsAAAAJ:hqOjcs7Dif8C
+paper_url: https://doi.org/10.3390/cryptography10040045
 ---
 
 The Linear Equivalence Signature Scheme (LESS) is a code-based post-quantum candidate in
