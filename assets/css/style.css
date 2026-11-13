@@ -212,3 +212,30 @@ ul.publications { list-style: none; padding: 0; display: flex; flex-direction: c
 
 footer { border-top: 1px solid var(--line); padding: 1.5rem 1.25rem 3rem;
          color: var(--muted); font-size: .9rem; }
+
+/* Thesis proposals */
+ul.thesis-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1rem; }
+.thesis {
+  border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.25rem;
+  background: var(--card); border-left: 3px solid var(--gold);
+}
+.thesis-main summary { cursor: pointer; list-style: none; }
+.thesis-main summary::-webkit-details-marker { display: none; }
+.thesis-main summary::before { content: "▸ "; color: var(--gold); }
+.thesis-main[open] summary::before { content: "▾ "; }
+.thesis-title { font-weight: 600; font-size: 1.1rem; }
+.thesis-subtitle { display: block; color: var(--link); font-size: .9rem; margin-top: .15rem; }
+.thesis-summary { display: block; color: var(--muted); font-size: .9rem; margin-top: .4rem; }
+.thesis-body { margin: 1rem 0 0 1.1rem; font-size: .95rem; }
+.thesis-body h3 { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 1.1rem 0 .3rem; }
+.thesis-body ul, .thesis-body ol { margin: 0; padding-left: 1.2rem; }
+ul.thesis-supervisors { list-style: none; padding: 0; }
+.thesis-supervisors li { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; padding: .3rem 0; }
+.thesis-sup-name { font-weight: 600; }
+.copy-mail {
+  font: inherit; font-size: .85rem; cursor: pointer; color: var(--fg); background: transparent;
+  border: 1px solid var(--accent); border-radius: 20px; padding: .15rem .8rem;
+}
+.copy-mail:hover { background: var(--accent); }
+.copy-mail.copied { border-color: var(--teal); color: var(--teal); background: transparent; }
+.thesis-mailto { font-size: .8rem; color: var(--muted); }

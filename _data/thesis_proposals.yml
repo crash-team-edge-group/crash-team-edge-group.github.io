@@ -1,0 +1,24 @@
+# One entry per thesis proposal. Add a new "- title:" block to add a proposal.
+# supervisors / contacts: name + email (the email is copied to the clipboard on click).
+- title: "Post-Quantum Key Exchange for IoT Devices"
+  subtitle: "Classical, hybrid and post-quantum EDHOC + OSCORE on a RISC-V MCU"
+  summary: "Implement and measure classical, hybrid and post-quantum EDHOC + OSCORE on the X-HEEP RISC-V platform, then quantify the gain from our ML-KEM and Keccak accelerators."
+  prerequisites: "C, cryptography"
+  motivations:
+    - "IoT devices deployed today will still be running when quantum attacks become practical."
+    - "EDHOC is the IETF lightweight key exchange; a KEM-based post-quantum variant is being standardised."
+    - "Hybrid EDHOC messages are about 7x larger: the radio, not the CPU, may set the cost."
+  outcomes:
+    - "Classical, hybrid and post-quantum EDHOC + OSCORE implemented on X-HEEP."
+    - "Message size, number of fragments and cycles measured per handshake."
+    - "Results rerun on our ML-KEM and Keccak accelerators, with the gain quantified."
+  plan:
+    - "Study: EDHOC, OSCORE, KEM draft"
+    - "Port: C stack to bare-metal X-HEEP"
+    - "Three variants: X25519, hybrid, ML-KEM"
+    - "Measure: radio link model and accelerators"
+  supervisors:
+    - name: "Alessandra Dolmeta"
+      email: "alessandra.dolmeta@polito.it"
+    - name: "Valeria Piscopo"
+      email: "valeria.piscopo@polito.it"

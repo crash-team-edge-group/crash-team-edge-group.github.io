@@ -1,0 +1,74 @@
+---
+layout: default
+title: Thesis
+permalink: /thesis/
+description: Thesis proposals offered by the CRASH team.
+---
+
+<p>Thesis proposals offered by the CRASH team. Click a proposal for details, then use the button to copy a supervisor's email and send your CV and a short message.</p>
+
+<ul class="thesis-list">
+{% for t in site.data.thesis_proposals %}
+  <li class="thesis">
+    <details class="thesis-main">
+      <summary>
+        <span class="thesis-title">{{ t.title }}</span>
+        {% if t.subtitle %}<span class="thesis-subtitle">{{ t.subtitle }}</span>{% endif %}
+        <span class="thesis-summary">{{ t.summary }}</span>
+      </summary>
+      <div class="thesis-body">
+        {% if t.motivations %}
+        <h3>Motivations</h3>
+        <ul>{% for m in t.motivations %}<li>{{ m }}</li>{% endfor %}</ul>
+        {% endif %}
+        {% if t.outcomes %}
+        <h3>Expected outcomes</h3>
+        <ul>{% for o in t.outcomes %}<li>{{ o }}</li>{% endfor %}</ul>
+        {% endif %}
+        {% if t.plan %}
+        <h3>Work plan</h3>
+        <ol>{% for p in t.plan %}<li>{{ p }}</li>{% endfor %}</ol>
+        {% endif %}
+        {% if t.prerequisites %}<p><strong>Prerequisites:</strong> {{ t.prerequisites }}</p>{% endif %}
+        <h3>Supervisors</h3>
+        <ul class="thesis-supervisors">
+          {% for s in t.supervisors %}
+          <li>
+            <span class="thesis-sup-name">{{ s.name }}</span>
+            <button type="button" class="copy-mail" data-email="{{ s.email }}" title="Copy email address">Copy email</button>
+            <a class="thesis-mailto" href="mailto:{{ s.email }}?subject={{ t.title | uri_escape }}">open mail app</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </details>
+  </li>
+{% else %}
+  <li>No open proposals at the moment.</li>
+{% endfor %}
+</ul>
+
+<script>
+(function () {
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll('.copy-mail').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var email = btn.dataset.email, old = btn.textContent;
+      var done = function () {
+        btn.textContent = 'Copied: ' + email;
+        btn.classList.add('copied');
+        setTimeout(function () { btn.textContent = old; btn.classList.remove('copied'); }, 2500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(done, function () { fallbackCopy(email); done(); });
+      } else { fallbackCopy(email); done(); }
+    });
+  });
+})();
+</script>
